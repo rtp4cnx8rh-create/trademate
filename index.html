@@ -167,36 +167,34 @@
                     </a>
                 </div>
                 
-                <!-- ZWEI BILDER NEBENEINANDER (GITHUB RAW URL & PLACEHOLDER) -->
+                <!-- TEXT UND EIN BILD NEBENEINANDER (ERSATZ FÜR ZWEI BILDER) -->
                 <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 2 Spalten Layout für Text links und Bild rechts -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left"> 
                         
-                        <!-- Bild 1: GitHub URL (Hauptscreenshot) -->
-                        <div class="relative">
-                            <img 
-                                src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/Scren1.png?raw=true" 
-                                alt="TradeMate App Dashboard Screenshot" 
-                                class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
-                                style="box-shadow: 0 10px 30px rgba(0, 173, 181, 0.2);"
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot+1';"
-                            />
-                             <p class="text-xs text-gray-500 mt-2 text-left">Bild 1: Hauptansicht des Journals (von GitHub geladen).</p>
+                        <!-- Linke Spalte: Design Text (Neu) -->
+                        <div class="relative text-center md:text-left p-4 md:p-0">
+                            <!-- Design Text in Fetter Schrift, etwas größer -->
+                            <h2 class="text-3xl font-extrabold text-white mb-4">
+                                Minimalistisch. Dunkel. Fokus.
+                            </h2>
+                            <p class="text-xl text-gray-400 font-bold leading-relaxed">
+                                Das TradeMate Design ist optimiert für lange Trading-Sitzungen. Alle wichtigen Daten sind sofort erfassbar, ohne die Augen zu ermüden. So bleibst du fokussiert auf das Wesentliche.
+                            </p>
                         </div>
-
-                        <!-- Bild 2: Thematischer Placeholder (z.B. Strategie-Detail) -->
-                        <div class="relative">
+                        
+                        <!-- Rechte Spalte: Das verbleibende Foto (ursprünglich Bild 2) -->
+                        <div class="relative mx-auto w-full max-w-md md:max-w-none">
                             <img 
-                                src="https://placehold.co/600x400/00ADB5/111?text=Strategie-Detailansicht" 
-                                alt="TradeMate Strategie-Detailansicht Placeholder" 
-                                class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
-                                style="box-shadow: 0 10px 30px rgba(0, 173, 181, 0.2);"
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot+2';"
+                                src="https://github.com/rtp4cnx8rh-create/trademate/blob/a65a3ef46fc923f05ed1568a891633b0d97278ce/images/Scren1-left.png?raw=true" 
+                                alt="TradeMate App Detailansicht Screenshot" 
+                                class="w-full h-auto"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot';"
                             />
-                             <p class="text-xs text-gray-500 mt-2 text-left">Bild 2: Strategie-Analyse (Placeholder).</p>
                         </div>
                     </div>
                 </div>
-                <!-- ENDE ZWEI BILDER -->
+                <!-- ENDE TEXT UND EIN BILD -->
         
             </section>
         
@@ -278,16 +276,17 @@
                 <h2 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-16 tracking-tight">
                     Tiefgehende Strategie-Analyse
                 </h2>
-                <div class="mt-10 relative max-w-6xl mx-auto">
+                <!-- Container Breite für Verkleinerung auf max-w-4xl reduziert -->
+                <div class="mt-10 relative max-w-4xl mx-auto"> 
                     <!-- ZWEITES BILD WIEDER AUF THEMATISCHES PLACEHOLDER BILD GEÄNDERT -->
                     <img 
                         src="https://images.unsplash.com/photo-1590283086159-d8e6a2b37d45?fit=crop&w=1200&h=700&q=80" 
                         alt="Detaillierte Analyseansicht der TradeMate App (Bild 2)" 
-                        class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
-                        style="box-shadow: 0 10px 40px rgba(0, 173, 181, 0.2);"
+                        <!-- Rahmen entfernt: Nur rounded-xl und shadow-2xl beibehalten -->
+                        class="w-full h-auto rounded-xl shadow-2xl"
                         onerror="this.onerror=null; this.src='https://placehold.co/1200x700/333/EEE?text=Thematisches+Bild+konnte+nicht+geladen+werden';"
                     />
-                    <p class="text-xs text-gray-500 mt-2">Dieses Bild verwendet eine thematisch passende externe URL.</p>
+                    <!-- Text unter Foto entfernt -->
                 </div>
             </section>
             <!-- ENDE NEUER ABSCHNITT -->
