@@ -167,22 +167,36 @@
                     </a>
                 </div>
                 
-                <!-- HIER IST DAS BILD MIT RELATIVEM PFAD -->
+                <!-- ZWEI BILDER NEBENEINANDER (GITHUB RAW URL & PLACEHOLDER) -->
                 <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
-                    <img 
-                        src="images/Screen1" 
-                        alt="TradeMate App Dashboard Screenshot" 
-                        class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
-                        style="box-shadow: 0 10px 40px rgba(0, 173, 181, 0.2);"
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         
-                        <!-- WICHTIGER HINWEIS: Dieses Bild wird in der Vorschau NICHT angezeigt, 
-                             da kein Zugriff auf lokale Pfade besteht. Es funktioniert jedoch auf GitHub Pages. 
-                             Wir verwenden hier zur Veranschaulichung ein Placehold-Bild. -->
-                        onerror="this.onerror=null; this.src='https://placehold.co/1200x700/333/EEE?text=TradeMate+App+Screenshot+%28images%2FScreen1%29%0AWird+auf+GitHub+funktionieren';"
-                    />
+                        <!-- Bild 1: GitHub URL (Hauptscreenshot) -->
+                        <div class="relative">
+                            <img 
+                                src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/Scren1.png?raw=true" 
+                                alt="TradeMate App Dashboard Screenshot" 
+                                class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
+                                style="box-shadow: 0 10px 30px rgba(0, 173, 181, 0.2);"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot+1';"
+                            />
+                             <p class="text-xs text-gray-500 mt-2 text-left">Bild 1: Hauptansicht des Journals (von GitHub geladen).</p>
+                        </div>
 
+                        <!-- Bild 2: Thematischer Placeholder (z.B. Strategie-Detail) -->
+                        <div class="relative">
+                            <img 
+                                src="https://placehold.co/600x400/00ADB5/111?text=Strategie-Detailansicht" 
+                                alt="TradeMate Strategie-Detailansicht Placeholder" 
+                                class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
+                                style="box-shadow: 0 10px 30px rgba(0, 173, 181, 0.2);"
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot+2';"
+                            />
+                             <p class="text-xs text-gray-500 mt-2 text-left">Bild 2: Strategie-Analyse (Placeholder).</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- ENDE BILD -->
+                <!-- ENDE ZWEI BILDER -->
         
             </section>
         
@@ -265,15 +279,15 @@
                     Tiefgehende Strategie-Analyse
                 </h2>
                 <div class="mt-10 relative max-w-6xl mx-auto">
-                    <!-- Dieses Bild verwendet weiterhin eine externe URL zum Vergleich -->
+                    <!-- ZWEITES BILD WIEDER AUF THEMATISCHES PLACEHOLDER BILD GEÄNDERT -->
                     <img 
                         src="https://images.unsplash.com/photo-1590283086159-d8e6a2b37d45?fit=crop&w=1200&h=700&q=80" 
                         alt="Detaillierte Analyseansicht der TradeMate App (Bild 2)" 
                         class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
                         style="box-shadow: 0 10px 40px rgba(0, 173, 181, 0.2);"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1200x700/333/EEE?text=Bild+konnte+nicht+geladen+werden';"
+                        onerror="this.onerror=null; this.src='https://placehold.co/1200x700/333/EEE?text=Thematisches+Bild+konnte+nicht+geladen+werden';"
                     />
-                    <p class="text-xs text-gray-500 mt-2">Dieses Bild verwendet eine externe URL zum Vergleich.</p>
+                    <p class="text-xs text-gray-500 mt-2">Dieses Bild verwendet eine thematisch passende externe URL.</p>
                 </div>
             </section>
             <!-- ENDE NEUER ABSCHNITT -->
