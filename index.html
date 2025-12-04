@@ -167,17 +167,45 @@
                     </a>
                 </div>
                 
-                <!-- HIER IST DAS BILD VON DER URL EINGEFÜGT -->
+                <!-- HIER IST DAS BILD MIT RELATIVEM PFAD -->
                 <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
-                    <!-- Das Bild wird nun über die direkte Raw-URL von GitHub geladen -->
                     <img 
-                        src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/e00b0828776315ee96f8677e0c336f6e6e438a29/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-04%20at%2000.39.16.png" 
+                        src="images/Screen1" 
                         alt="TradeMate App Dashboard Screenshot" 
                         class="w-full h-auto rounded-xl shadow-2xl ring-4 ring-gray-900/50"
                         style="box-shadow: 0 10px 40px rgba(0, 173, 181, 0.2);"
-                        onerror="this.onerror=null; this.src='https://placehold.co/1200x600/C0392B/FFFFFF?text=Laden+der+externen+URL+fehlgeschlagen';"
+                        
+                        <!-- Fallback-Code für diese sandboxed Vorschau-Umgebung -->
+                        onerror="this.onerror=null; 
+                                 this.style.display='none'; 
+                                 document.getElementById('fallback-warning-1').style.display='flex';"
                     />
-                    <p class="text-xs text-gray-500 mt-2">Das Hero-Bild wird von einer externen GitHub Raw-URL geladen. Das Laden kann fehlschlagen, wenn der direkte Zugriff blockiert ist.</p>
+
+                    <!-- Start: Platzhalter, der nur bei Fehler angezeigt wird (in dieser Vorschau immer) -->
+                    <div id="fallback-warning-1" class="hidden w-full h-96 rounded-xl shadow-2xl ring-4 ring-gray-900/50 flex-col items-center justify-center text-center p-8"
+                        style="box-shadow: 0 10px 40px rgba(0, 173, 181, 0.2); background-color: var(--color-surface); border: 2px dashed #00ADB5;">
+                        <svg class="w-16 h-16 text-cyan-400 mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        <p class="text-xl font-semibold text-white mb-2">Bildpfad: <span class="text-cyan-400">images/Screen1</span></p>
+                        <p class="text-gray-400 max-w-lg">
+                            **Hinweis:** Das Bild kann hier nicht geladen werden (kein Zugriff auf lokale Dateien). Es wird funktionieren, sobald Sie es auf GitHub hochladen.
+                        </p>
+                    </div>
+                    <!-- Ende: Platzhalter -->
+                    
+                    <!-- Dringender Hinweis, um das ursprüngliche Problem zu lösen -->
+                    <div class="mt-8 pt-4 border-t border-orange-700 bg-orange-900/20 p-4 rounded-lg max-w-3xl mx-auto">
+                        <h3 class="text-xl font-bold text-orange-400 mb-2">!!! WICHTIGE NÄCHSTE FRAGE !!!</h3>
+                        <p class="text-orange-300">
+                            Wir können nun den gewünschten Pfad verwenden, aber ich benötige Ihre Hilfe, um das ursprüngliche, **funktionale Problem** zu lösen, das zur Frage nach der "alternativen Methode" führte.
+                        </p>
+                        <p class="mt-2 text-white font-medium">
+                            **Was funktioniert in Ihrem Code nicht?** (z. B. "Die Trades werden nicht gespeichert", "Die Berechnung ist falsch", "Der Benutzer kann sich nicht einloggen").
+                        </p>
+                    </div>
                 </div>
                 <!-- ENDE BILD -->
         
