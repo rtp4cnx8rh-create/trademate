@@ -153,15 +153,32 @@
                 <span class="text-xl font-bold tracking-tight text-white">TradeMate</span>
             </a>
 
-            <!-- Navigation Links -->
+            <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#home" onclick="navigateTo('page-home')" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent" data-target="home">Home</a>
                 <a href="#pricing" onclick="navigateTo('page-pricing')" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent" data-target="pricing">Pricing</a>
                 <a href="#support" onclick="navigateTo('page-support')" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent" data-target="support">Support</a>
             </nav>
 
-            <!-- BUTTON: Subtle Button -->
-            <a href="#pricing" onclick="navigateTo('page-pricing')" class="btn-secondary text-sm hidden sm:inline-flex cursor-pointer">Subscribe Now</a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-white p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <!-- Desktop Subscribe Button -->
+            <a href="#pricing" onclick="navigateTo('page-pricing')" class="btn-secondary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
+        </div>
+
+        <!-- Mobile Navigation Menu (Overlay) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 border-t border-gray-800 backdrop-blur-md bg-[#111111]/90 z-20">
+            <nav class="px-4 py-4 space-y-3">
+                <a href="#home" onclick="navigateTo('page-home'); toggleMobileMenu();" class="block text-white hover:text-cyan-400 transition py-2">Home</a>
+                <a href="#pricing" onclick="navigateTo('page-pricing'); toggleMobileMenu();" class="block text-white hover:text-cyan-400 transition py-2">Pricing</a>
+                <a href="#support" onclick="navigateTo('page-support'); toggleMobileMenu();" class="block text-white hover:text-cyan-400 transition py-2">Support</a>
+                <a href="#pricing" onclick="navigateTo('page-pricing'); toggleMobileMenu();" class="btn-primary text-center block mt-4">Subscribe Now</a>
+            </nav>
         </div>
     </header>
 
@@ -219,11 +236,11 @@
                         </div>
 
                         <!-- Right Column: The Image -->
-                        <div class="relative mx-auto w-full max-w-md md:max-w-none">
+                        <div class="relative mx-auto w-full max-w-md md:max-w-none overflow-visible">
                             <img
                                 src="https://github.com/rtp4cnx8rh-create/trademate/blob/a65a3ef46fc923f05ed1568a891633b0d97278ce/images/Scren1-left.png?raw=true"
                                 alt="TradeMate App Detail View Screenshot"
-                                class="w-full h-auto mx-auto"
+                                class="w-full h-auto mx-auto object-contain"
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot';"
                             />
                         </div>
@@ -349,7 +366,7 @@
                                 </div>
 
                                 <!-- Right Half: Enlarged image with sparkle effects -->
-                                <div class="relative overflow-hidden h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center">
+                                <div class="relative overflow-hidden h-[400px] md:h-[500px] lg:h-[600px] flex items-start md:items-center justify-center pt-8 md:pt-0">
                                     <!-- Animated sparkle effect in background - Extended across the entire field -->
                                     <div class="absolute inset-0 opacity-25 z-0">
                                         <!-- Large light orbs -->
@@ -533,6 +550,12 @@
     </footer>
 
     <script>
+        // Function to toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
         // Function to toggle between monthly and yearly pricing
         function togglePricing(plan) {
             const monthlyToggle = document.getElementById('toggle-monthly');
