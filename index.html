@@ -141,12 +141,110 @@
                 transform: translateY(10px);
             }
         }
+
+        /* Scroll animations */
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Apply animations on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+        }
+        .animate-on-scroll.animate-in {
+            animation: slideInFromBottom 0.8s ease-out forwards;
+        }
+        .animate-slide-left.animate-in {
+            animation: slideInFromLeft 0.8s ease-out forwards;
+        }
+        .animate-slide-right.animate-in {
+            animation: slideInFromRight 0.8s ease-out forwards;
+        }
+        .animate-scale.animate-in {
+            animation: scaleIn 0.8s ease-out forwards;
+        }
+
+        /* Floating animation for hero section */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Hover effects for cards */
+        .apple-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .apple-card:hover:not(.no-hover) {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Gradient text animation */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .gradient-animate {
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
     </style>
 </head>
 <body class="antialiased" style="background-color: var(--color-body-bg);">
 
     <!-- Navbar/Header (Simple, Dark Background) -->
-    <header class="sticky top-0 z-10 w-full backdrop-blur-md bg-[#111111]/90 border-b border-gray-800">
+    <header class="sticky top-0 z-10 w-full border-b border-gray-800" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background-color: rgba(17, 17, 17, 0.9);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="#" onclick="navigateTo('page-home')" class="flex items-center space-x-2 cursor-pointer">
                 <img src="https://github.com/rtp4cnx8rh-create/trademate/blob/afdd616874d8c239d10d2ec9c3fa9abbc3301d58/images/TradeMate%20Splashart.png?raw=true" alt="TradeMate Logo" class="h-8 w-8">
@@ -157,7 +255,7 @@
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#home" onclick="navigateTo('page-home')" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent" data-target="home">Home</a>
                 <a href="#pricing" onclick="navigateTo('page-pricing')" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent" data-target="pricing">Pricing</a>
-                <a href="#support" onclick="navigateTo('page-support')" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent" data-target="support">Support</a>
+                <a href="support/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Support</a>
             </nav>
 
             <!-- Mobile Menu Button -->
@@ -172,11 +270,11 @@
         </div>
 
         <!-- Mobile Navigation Menu (Overlay) -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 border-t border-gray-800 backdrop-blur-md bg-[#111111]/90 z-20">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 z-20" style="background-color: #111111;">
             <nav class="px-4 py-4 space-y-3">
                 <a href="#home" onclick="navigateTo('page-home'); toggleMobileMenu();" class="block text-white hover:text-cyan-400 transition py-2">Home</a>
                 <a href="#pricing" onclick="navigateTo('page-pricing'); toggleMobileMenu();" class="block text-white hover:text-cyan-400 transition py-2">Pricing</a>
-                <a href="#support" onclick="navigateTo('page-support'); toggleMobileMenu();" class="block text-white hover:text-cyan-400 transition py-2">Support</a>
+                <a href="support/index.html" class="block text-white hover:text-cyan-400 transition py-2">Support</a>
                 <a href="#pricing" onclick="navigateTo('page-pricing'); toggleMobileMenu();" class="btn-primary text-center block mt-4">Subscribe Now</a>
             </nav>
         </div>
@@ -190,19 +288,19 @@
         <!-- ==================================================================== -->
         <div id="page-home" class="app-page page-content">
             <section class="py-16 md:py-32 text-center px-4 sm:px-6 lg:px-8">
-                <h1 class="hero-headline text-white max-w-5xl mx-auto">
+                <h1 class="hero-headline text-white max-w-5xl mx-auto animate-on-scroll">
                     Your Trading Journal, redefined.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">For iOS, iPadOS and macOS.</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 gradient-animate">For iOS, iPadOS and macOS.</span>
                 </h1>
-                <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto font-light">
+                <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto font-light animate-on-scroll" style="animation-delay: 0.2s;">
                     TradeMate is the modern, lightning-fast journal that syncs your performance in real time. Analyze, optimize and win.
                 </p>
 
                 <!-- CTA-Buttons -->
-                <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-on-scroll" style="animation-delay: 0.4s;">
 
                     <!-- App Store Button -->
-                    <a href="https://www.apple.com/app-store/" target="_blank" class="app-store-btn text-lg cursor-pointer mx-auto sm:mx-0">
+                    <a href="https://www.apple.com/app-store/" target="_blank" class="app-store-btn text-lg cursor-pointer mx-auto sm:mx-0 animate-float">
                         <!-- Apple Logo/Icon (Minimalist SVG) -->
                         <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 20.94a1 1 0 01-.7-.3l-3.35-3.05a.7.7 0 01-.2-.5V5.5a1 1 0 011.66-.75L12 6.55l3.59-1.81a1 1 0 011.66.75v11.1a.7.7 0 01-.2.5L12.7 20.64a1 1 0 01-.7.3z" />
@@ -218,12 +316,33 @@
                     </a>
                 </div>
 
+                <!-- All Devices Section -->
+                <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
+                    <div class="relative animate-on-scroll animate-scale mb-12">
+                        <img
+                            src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/All%20devices.png?raw=true"
+                            alt="TradeMate on iPhone, iPad and Mac"
+                            class="w-full h-auto mx-auto rounded-2xl"
+                            style="max-width: 1200px;"
+                            onerror="this.onerror=null; this.src='https://placehold.co/1200x600/333/EEE?text=All+Devices';"
+                        />
+                    </div>
+
+                    <div class="text-center animate-on-scroll" style="animation-delay: 0.2s;">
+                        <span class="text-sm font-semibold uppercase text-cyan-400 tracking-wider">Cross-Platform</span>
+                        <h2 class="text-4xl md:text-5xl font-bold mt-2 mb-6 text-white">Seamlessly synced across all your Apple devices.</h2>
+                        <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                            Whether you're on your iPhone, iPad, or Mac – TradeMate is always with you. All your data is automatically synchronized in real-time via iCloud.
+                        </p>
+                    </div>
+                </div>
+
                 <!-- START: TEXT AND IMAGE SIDE BY SIDE -->
                 <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left">
 
                         <!-- Left Column: Text -->
-                        <div>
+                        <div class="animate-on-scroll animate-slide-left">
                             <span class="text-sm font-semibold uppercase text-cyan-400 tracking-wider">Design & Usability</span>
                             <h3 class="text-3xl font-bold mt-2 mb-4 text-white">Focus on what matters.</h3>
                             <p class="text-gray-400 text-lg">
@@ -236,9 +355,9 @@
                         </div>
 
                         <!-- Right Column: The Image -->
-                        <div class="relative mx-auto w-full max-w-lg md:max-w-2xl overflow-visible">
+                        <div class="relative mx-auto w-full max-w-md md:max-w-xl overflow-visible animate-on-scroll animate-slide-right">
                             <img
-                                src="https://github.com/rtp4cnx8rh-create/trademate/blob/a65a3ef46fc923f05ed1568a891633b0d97278ce/images/Scren1-left.png?raw=true"
+                                src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/1.png?raw=true"
                                 alt="TradeMate App Detail View Screenshot"
                                 class="w-full h-auto mx-auto object-contain"
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot';"
@@ -253,11 +372,11 @@
             <!-- 2. Feature Section -->
             <section id="features" class="py-20 md:py-32" style="background-color: var(--color-light-bg);">
                 <div class="px-4 sm:px-6 lg:px-8">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-16 tracking-tight">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white text-center mb-16 tracking-tight animate-on-scroll">
                         The Power of TradeMate
                     </h2>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll" style="animation-delay: 0.2s;">
 
                         <!-- Feature 1: Sync Trades (LiveSync) -->
                         <div class="apple-card p-6 md:p-8 text-center">
@@ -474,43 +593,79 @@
         </div>
 
         <!-- ==================================================================== -->
-        <!-- 3. SUPPORT PAGE -->
+        <!-- 3. PRIVACY POLICY PAGE -->
         <!-- ==================================================================== -->
-        <div id="page-support" class="app-page page-content hidden">
+        <div id="page-privacy" class="app-page page-content hidden">
              <section class="py-20 md:py-32 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-                <h2 class="text-5xl font-extrabold text-white text-center mb-6 tracking-tight">We're here for you.</h2>
+                <h2 class="text-5xl font-extrabold text-white text-center mb-6 tracking-tight">Datenschutzerklärung</h2>
                 <p class="text-xl text-gray-400 text-center max-w-3xl mx-auto mb-16">
-                    Whether you have a question about LiveSync setup or analytics.
+                    Privacy Policy
                 </p>
 
-                <div class="space-y-6">
-                    <!-- FAQ 1 -->
-                    <div class="apple-card p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-white">How do I set up LiveSync?</h3>
-                        <p class="text-gray-400">
-                            Go to the "Broker Integration" section in settings and follow the instructions to generate your API key at your broker. Add this key to TradeMate. Synchronization will begin immediately.
-                        </p>
-                    </div>
+                <div class="apple-card no-hover p-8 md:p-12 text-left">
+                    <div class="space-y-6 text-gray-400 leading-relaxed">
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-white">1. Einleitung und Geltungsbereich</h3>
+                            <p>
+                                Der Schutz Ihrer personenbezogenen Daten ist uns, der <strong class="text-white">TradeMate, Hauptstraße 69, 66497 Contwig, Deutschland</strong>, sehr wichtig. Diese Datenschutzerklärung informiert Sie über die Verarbeitung personenbezogener Daten im Zusammenhang mit der Nutzung der TradeMate App Website (und deren statischem Inhalt).
+                            </p>
+                        </div>
 
-                    <!-- FAQ 2 -->
-                    <div class="apple-card p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-white">Which brokers are supported?</h3>
-                        <p class="text-gray-400">
-                            We currently support all major platforms such as Interactive Brokers, TradeStation, DeGiro and most MetaTrader-based brokers. You can find a complete list in the app under "Integration".
-                        </p>
-                    </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-white">2. Verantwortlicher</h3>
+                            <p class="mb-3">
+                                Verantwortlich für die Datenverarbeitung im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:
+                            </p>
+                            <p>
+                                <strong class="text-white">TradeMate</strong><br>
+                                Hauptstraße 69, 66497 Contwig, Deutschland<br>
+                                Kontakt-E-Mail: <a href="mailto:support@trademate-app.com" class="text-cyan-400 hover:text-cyan-300">support@trademate-app.com</a>
+                            </p>
+                        </div>
 
-                    <!-- FAQ 3 -->
-                    <div class="apple-card p-6">
-                        <h3 class="text-xl font-semibold mb-2 text-white">How can I contact TradeMate?</h3>
-                        <p class="text-gray-400">
-                            Send us an email at <a href="mailto:support@trademate.de" class="text-cyan-400 hover:text-cyan-300">support@trademate.de</a> or use our contact form in the app. Pro and Ultimate customers also have access to our live chat.
-                        </p>
-                    </div>
-                </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-white">3. Hosting und Datenverarbeitung</h3>
+                            <p class="mb-3">
+                                Die TradeMate App Website wird über <strong class="text-white">GitHub Pages</strong> gehostet.
+                            </p>
+                            <p class="mb-3">
+                                <strong class="text-white">Keine eigene Datenspeicherung:</strong> Wir selbst betreiben keine eigenen Server und speichern keine personenbezogenen Daten in Datenbanken, die über die Nutzung der Website entstehen (z.B. Logfiles, Nutzerprofile).
+                            </p>
+                            <p>
+                                <strong class="text-white">Datenerfassung durch GitHub:</strong> Beim Zugriff auf die Website werden durch den Hostinganbieter (GitHub Inc., USA) technische Daten erhoben, die zur Bereitstellung der Website notwendig sind (z.B. IP-Adresse, Zugriffszeit, verwendeter Browser). Wir haben keinen direkten Zugriff auf diese Daten; diese unterliegen der Datenschutzerklärung von GitHub.
+                            </p>
+                        </div>
 
-                <div class="text-center mt-12">
-                     <a href="#" class="btn-primary text-lg cursor-pointer">Go to Contact Form</a>
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-white">4. Keine Cookies, Tracking oder Analyse-Tools</h3>
+                            <p>
+                                Die TradeMate App Website verwendet <strong class="text-white">keine Cookies</strong> (weder technisch notwendige noch Tracking-Cookies), <strong class="text-white">keine Analyse-Tools</strong> (wie Google Analytics) und <strong class="text-white">keine Social-Media-Plugins</strong> oder Newsletter-Dienste, die Ihre Daten erfassen könnten.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-white">5. Externe Schriftarten (Google Fonts)</h3>
+                            <p class="mb-3">
+                                Auf der TradeMate App Website werden externe Schriftarten ("Google Fonts") des Anbieters <strong class="text-white">Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland</strong>, verwendet.
+                            </p>
+                            <p class="mb-3">
+                                Beim Aufruf einer Seite lädt Ihr Browser die benötigten Schriftarten, um Texte korrekt anzuzeigen. Dabei wird Ihre IP-Adresse an einen Server von Google in den USA übertragen. Google Fonts werden im Interesse einer ansprechenden Darstellung unserer Online-Angebote verwendet, was ein berechtigtes Interesse im Sinne von Art. 6 Abs. 1 lit. f DSGVO darstellt.
+                            </p>
+                            <p>
+                                Weitere Informationen zur Datenverarbeitung durch Google finden Sie hier: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:text-cyan-300">https://policies.google.com/privacy</a>.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-3 text-white">6. Ihre Rechte</h3>
+                            <p class="mb-3">
+                                Hinsichtlich der wenigen personenbezogenen Daten, die bei der Nutzung dieser Website indirekt verarbeitet werden (z.B. durch Google Fonts), stehen Ihnen grundsätzlich die Rechte auf <strong class="text-white">Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch</strong> zu.
+                            </p>
+                            <p>
+                                Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der zuständigen Aufsichtsbehörde beschweren.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -543,21 +698,16 @@
                 <p>&copy; 2025 TradeMate App. All rights reserved.</p>
 
                 <!-- Social Media Links -->
-                <div class="mt-4 flex justify-center items-center space-x-6">
+                <div class="mt-4 flex justify-center items-center">
                     <a href="https://instagram.com/trademate_com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
                         </svg>
                     </a>
-                    <a href="https://twitter.com/trademate_com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition-colors">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                        </svg>
-                    </a>
                 </div>
 
                 <div class="mt-4 space-x-4">
-                    <a href="#" class="hover:text-gray-300">Privacy</a>
+                    <a href="#privacy" onclick="navigateTo('page-privacy')" class="hover:text-gray-300 cursor-pointer">Privacy</a>
                     <a href="#" class="hover:text-gray-300">Terms of Use</a>
                 </div>
             </div>
@@ -565,6 +715,27 @@
     </footer>
 
     <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Function to initialize animations
+        function initAnimations() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-slide-left, .animate-slide-right, .animate-scale');
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
         // Function to toggle mobile menu
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
@@ -684,12 +855,15 @@
 
             if (initialHash) {
                  // Try to navigate to the corresponding page (e.g. pricing -> page-pricing)
-                if (initialHash === 'pricing' || initialHash === 'support') {
+                if (initialHash === 'pricing' || initialHash === 'privacy') {
                      initialPageId = `page-${initialHash}`;
                 }
             }
 
             navigateTo(initialPageId);
+
+            // Initialize scroll animations
+            initAnimations();
 
             // Add event listeners to all navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -698,7 +872,7 @@
                     const pageId = href.substring(1); // Remove '#'
 
                     // Only perform navigation if it's one of our SPA pages
-                    if (pageId === 'home' || pageId === 'pricing' || pageId === 'support') {
+                    if (pageId === 'home' || pageId === 'pricing' || pageId === 'privacy') {
                         e.preventDefault();
                     }
                 });
