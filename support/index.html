@@ -30,30 +30,33 @@
             color: var(--color-dark);
             font-weight: 600;
             padding: 10px 24px;
-            border-radius: 9999px;
+            border-radius: 9999px; /* Pill-shaped button */
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 173, 181, 0.2);
         }
         .btn-primary:hover {
-            background: linear-gradient(90deg, #00ADB5, #4DE4C3);
+            background: linear-gradient(90deg, #00ADB5, #4DE4C3); /* Teal to Mint */
             box-shadow: 0 6px 20px rgba(0, 173, 181, 0.6);
         }
         .btn-primary:active {
             transform: scale(0.95);
             box-shadow: 0 2px 8px rgba(0, 173, 181, 0.3);
         }
-
+        /* Subtle button (navigation bar) */
         .btn-secondary {
             background-color: rgba(255, 255, 255, 0.05);
             color: var(--color-dark);
             font-weight: 500;
             padding: 8px 20px;
             border-radius: 9999px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border: none;
+            box-shadow: none;
         }
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, #00ADB5, #4DE4C3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.5);
         }
         .btn-secondary:active {
             transform: scale(0.95);
@@ -84,14 +87,15 @@
     <header class="sticky top-0 z-10 w-full border-b border-gray-800" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background-color: rgba(17, 17, 17, 0.9);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="../index.html" class="flex items-center space-x-2 cursor-pointer">
-                <img src="https://github.com/rtp4cnx8rh-create/trademate/blob/afdd616874d8c239d10d2ec9c3fa9abbc3301d58/images/TradeMate%20Splashart.png?raw=true" alt="TradeMate Logo" class="h-8 w-8">
+                <img src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/TradeMate%20Splashart.png" alt="TradeMate Logo" class="h-8 w-8">
                 <span class="text-xl font-bold tracking-tight text-white">TradeMate</span>
             </a>
 
             <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="../index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Home</a>
-                <a href="../index.html#pricing" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Pricing</a>
+                <a href="../features/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Features</a>
+                <a href="../pricing/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Pricing</a>
                 <a href="index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-cyan-400 text-white font-semibold">Support</a>
             </nav>
 
@@ -103,16 +107,17 @@
             </button>
 
             <!-- Desktop Subscribe Button -->
-            <a href="../index.html#pricing" class="btn-secondary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
+            <a href="../index.html#pricing" class="btn-primary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
         </div>
 
         <!-- Mobile Navigation Menu (Overlay) -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 z-20" style="background-color: #111111;">
             <nav class="px-4 py-4 space-y-3">
                 <a href="../index.html" class="block text-white hover:text-cyan-400 transition py-2">Home</a>
-                <a href="../index.html#pricing" class="block text-white hover:text-cyan-400 transition py-2">Pricing</a>
+                <a href="../features/index.html" class="block text-white hover:text-cyan-400 transition py-2">Features</a>
+                <a href="../pricing/index.html" class="block text-white hover:text-cyan-400 transition py-2">Pricing</a>
                 <a href="index.html" class="block text-cyan-400 transition py-2">Support</a>
-                <a href="../index.html#pricing" class="btn-primary text-center block mt-4">Subscribe Now</a>
+                <a href="../pricing/index.html" class="btn-primary text-center block mt-4">Subscribe Now</a>
             </nav>
         </div>
     </header>
@@ -147,13 +152,17 @@
                     <div class="apple-card p-6">
                         <h3 class="text-xl font-semibold mb-2 text-white">How can I contact TradeMate?</h3>
                         <p class="text-gray-400">
-                            Send us an email at <a href="mailto:support@trademate.de" class="text-cyan-400 hover:text-cyan-300">support@trademate.de</a> or use our contact form in the app. Pro and Ultimate customers also have access to our live chat.
+                            Send us an email at <a href="mailto:support@trademate-app.com" class="text-cyan-400 hover:text-cyan-300">support@trademate-app.com</a> or use our contact form in the app. Pro and Ultimate customers also have access to our live chat.
                         </p>
                     </div>
-                </div>
 
-                <div class="text-center mt-12">
-                    <a href="#" class="btn-primary text-lg cursor-pointer">Go to Contact Form</a>
+                    <!-- FAQ 4 -->
+                    <div class="apple-card p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Is the app only available for iOS?</h3>
+                        <p class="text-gray-400">
+                            Currently, TradeMate is available exclusively for iOS, iPadOS, and macOS. However, we're considering an Android version if there's sufficient demand. Let us know if you'd like to see TradeMate on Android!
+                        </p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -172,7 +181,7 @@
             <div class="flex justify-center">
                 <a href="https://www.apple.com/app-store/" target="_blank" class="inline-block">
                     <img
-                        src="https://github.com/rtp4cnx8rh-create/trademate/blob/ad8baf065cfa561cf5f4fddd14ca85241ec7acd4/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg?raw=true"
+                        src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
                         alt="Download on the App Store"
                         class="h-12 md:h-14"
                         onerror="this.onerror=null; this.style.display='none';"
@@ -193,8 +202,8 @@
                 </div>
 
                 <div class="mt-4 space-x-4">
-                    <a href="../index.html#privacy" class="hover:text-gray-300 cursor-pointer">Privacy</a>
-                    <a href="#" class="hover:text-gray-300">Terms of Use</a>
+                    <a href="../privacy/index.html" class="hover:text-gray-300 cursor-pointer">Privacy</a>
+                    <a href="../terms/index.html" class="hover:text-gray-300 cursor-pointer">Terms of Use</a>
                 </div>
             </div>
         </div>
