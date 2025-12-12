@@ -30,30 +30,33 @@
             color: var(--color-dark);
             font-weight: 600;
             padding: 10px 24px;
-            border-radius: 9999px;
+            border-radius: 9999px; /* Pill-shaped button */
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 173, 181, 0.2);
         }
         .btn-primary:hover {
-            background: linear-gradient(90deg, #00ADB5, #4DE4C3);
+            background: linear-gradient(90deg, #00ADB5, #4DE4C3); /* Teal to Mint */
             box-shadow: 0 6px 20px rgba(0, 173, 181, 0.6);
         }
         .btn-primary:active {
             transform: scale(0.95);
             box-shadow: 0 2px 8px rgba(0, 173, 181, 0.3);
         }
-
+        /* Subtle button (navigation bar) */
         .btn-secondary {
             background-color: rgba(255, 255, 255, 0.05);
             color: var(--color-dark);
             font-weight: 500;
             padding: 8px 20px;
             border-radius: 9999px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border: none;
+            box-shadow: none;
         }
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, #00ADB5, #4DE4C3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.5);
         }
         .btn-secondary:active {
             transform: scale(0.95);
@@ -107,13 +110,14 @@
     <header class="sticky top-0 z-10 w-full border-b border-gray-800" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background-color: rgba(17, 17, 17, 0.9);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <a href="../index.html" class="flex items-center space-x-2 cursor-pointer">
-                <img src="https://github.com/rtp4cnx8rh-create/trademate/blob/afdd616874d8c239d10d2ec9c3fa9abbc3301d58/images/TradeMate%20Splashart.png?raw=true" alt="TradeMate Logo" class="h-8 w-8">
+                <img src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/TradeMate%20Splashart.png" alt="TradeMate Logo" class="h-8 w-8">
                 <span class="text-xl font-bold tracking-tight text-white">TradeMate</span>
             </a>
 
             <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="../index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Home</a>
+                <a href="../features/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Features</a>
                 <a href="index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-cyan-400 text-white font-semibold">Pricing</a>
                 <a href="../support/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Support</a>
             </nav>
@@ -126,13 +130,14 @@
             </button>
 
             <!-- Desktop Subscribe Button -->
-            <a href="index.html" class="btn-secondary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
+            <a href="index.html" class="btn-primary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
         </div>
 
         <!-- Mobile Navigation Menu (Overlay) -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 z-20" style="background-color: #111111;">
             <nav class="px-4 py-4 space-y-3">
                 <a href="../index.html" class="block text-white hover:text-cyan-400 transition py-2">Home</a>
+                <a href="../features/index.html" class="block text-white hover:text-cyan-400 transition py-2">Features</a>
                 <a href="index.html" class="block text-cyan-400 transition py-2">Pricing</a>
                 <a href="../support/index.html" class="block text-white hover:text-cyan-400 transition py-2">Support</a>
                 <a href="index.html" class="btn-primary text-center block mt-4">Subscribe Now</a>
@@ -141,8 +146,23 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto relative z-0">
-        <div class="page-content">
+    <main class="max-w-7xl mx-auto relative z-0 overflow-hidden">
+        <!-- Modern Multi-Layer Atmospheric Background -->
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <!-- Primary cyan glow - top center -->
+            <div class="absolute top-[50px] left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-cyan-500 opacity-20 blur-[150px]"></div>
+
+            <!-- Secondary blue glow - left side -->
+            <div class="absolute top-[300px] left-[10%] w-[500px] h-[500px] rounded-full bg-blue-600 opacity-15 blur-[130px]"></div>
+
+            <!-- Tertiary teal glow - right side -->
+            <div class="absolute top-[400px] right-[15%] w-[450px] h-[450px] rounded-full bg-teal-500 opacity-12 blur-[140px]"></div>
+
+            <!-- Accent emerald glow - bottom -->
+            <div class="absolute bottom-[100px] left-1/3 w-[400px] h-[400px] rounded-full bg-emerald-500 opacity-10 blur-[120px]"></div>
+        </div>
+
+        <div class="page-content relative z-10">
             <section class="py-20 md:py-32 text-center px-4 sm:px-6 lg:px-8">
                 <h2 class="text-5xl font-extrabold text-white mb-6 tracking-tight">One Plan. All Features.</h2>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-16">
@@ -224,7 +244,7 @@
             <div class="flex justify-center">
                 <a href="https://www.apple.com/app-store/" target="_blank" class="inline-block">
                     <img
-                        src="https://github.com/rtp4cnx8rh-create/trademate/blob/ad8baf065cfa561cf5f4fddd14ca85241ec7acd4/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg?raw=true"
+                        src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
                         alt="Download on the App Store"
                         class="h-12 md:h-14"
                         onerror="this.onerror=null; this.style.display='none';"
@@ -246,7 +266,7 @@
 
                 <div class="mt-4 space-x-4">
                     <a href="../privacy/index.html" class="hover:text-gray-300 cursor-pointer">Privacy</a>
-                    <a href="#" class="hover:text-gray-300">Terms of Use</a>
+                    <a href="../terms/index.html" class="hover:text-gray-300 cursor-pointer">Terms of Use</a>
                 </div>
             </div>
         </div>
