@@ -32,7 +32,7 @@
             padding: 10px 24px;
             border-radius: 9999px; /* Pill-shaped button */
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 173, 181, 0.2);
         }
         .btn-primary:hover {
             background: linear-gradient(90deg, #00ADB5, #4DE4C3); /* Teal to Mint */
@@ -49,11 +49,14 @@
             font-weight: 500;
             padding: 8px 20px;
             border-radius: 9999px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             border: none;
+            box-shadow: none;
         }
         .btn-secondary:hover {
-            background-color: rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, #00ADB5, #4DE4C3);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 173, 181, 0.5);
         }
         .btn-secondary:active {
             transform: scale(0.95);
@@ -98,20 +101,77 @@
             min-height: calc(100vh - 64px - 100px); /* Height minus header and footer */
         }
 
-        /* Special style for the App Store button */
+        /* Special style for the App Store button with metallic effect */
         .app-store-btn {
-            background-color: white;
+            background:
+                linear-gradient(135deg, #e8e8e8 0%, #ffffff 25%, #e8e8e8 50%, #ffffff 75%, #e8e8e8 100%);
             color: black;
             font-weight: 600;
             padding: 10px 24px;
             border-radius: 9999px;
             display: inline-flex;
             align-items: center;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            box-shadow:
+                0 2px 8px rgba(255, 255, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
         }
+
+        .app-store-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0px,
+                    rgba(255, 255, 255, 0.3) 1px,
+                    transparent 2px,
+                    transparent 3px
+                );
+            pointer-events: none;
+        }
+
+        .app-store-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.5) 50%,
+                transparent 100%
+            );
+            animation: metallicShine 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes metallicShine {
+            0% {
+                left: -100%;
+            }
+            50% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
         .app-store-btn:hover {
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.5);
+            background:
+                linear-gradient(135deg, #f0f0f0 0%, #ffffff 25%, #f0f0f0 50%, #ffffff 75%, #f0f0f0 100%);
+            box-shadow:
+                0 4px 12px rgba(255, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
 
         /* Scroll animations */
@@ -208,8 +268,99 @@
             }
         }
         .gradient-animate {
+            background: linear-gradient(90deg, #00ADB5, #4DE4C3, #7DF9FF, #00FFF0, #4DE4C3, #00ADB5);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 2s ease-in-out infinite;
+        }
+
+        /* Animated border */
+        .animated-border-wrapper {
+            position: relative;
+            background: linear-gradient(90deg, #2D3748, #4C1D95, #4C1D95, #2D3748);
+            background-size: 300% 100%;
+            animation: borderGradient 10s linear infinite;
+            padding: 2px;
+        }
+
+        @keyframes borderGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+        /* Modern Premium card effect with colored background */
+        .metallic-card {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2847 25%, #0f1f3a 50%, #1a2847 75%, #0a1628 100%);
             background-size: 200% 200%;
-            animation: gradientShift 3s ease infinite;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+
+        .metallic-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(0, 173, 181, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(77, 228, 195, 0.1) 0%, transparent 50%);
+            opacity: 0.8;
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+
+        .metallic-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 120%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(0, 173, 181, 0.15) 30%,
+                rgba(0, 173, 181, 0.25) 50%,
+                rgba(0, 173, 181, 0.15) 70%,
+                transparent 100%
+            );
+            filter: blur(20px);
+            animation: horizontalShimmer 5s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes horizontalShimmer {
+            0% {
+                left: -120%;
+            }
+            50% {
+                left: 100%;
+            }
+            100% {
+                left: 100%;
+            }
         }
     </style>
 </head>
@@ -218,14 +369,15 @@
     <!-- Navbar/Header (Simple, Dark Background) -->
     <header class="sticky top-0 z-10 w-full border-b border-gray-800" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); background-color: rgba(17, 17, 17, 0.9);">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="#" onclick="navigateTo('page-home')" class="flex items-center space-x-2 cursor-pointer">
-                <img src="https://github.com/rtp4cnx8rh-create/trademate/blob/afdd616874d8c239d10d2ec9c3fa9abbc3301d58/images/TradeMate%20Splashart.png?raw=true" alt="TradeMate Logo" class="h-8 w-8">
+            <a href="index.html" class="flex items-center space-x-2 cursor-pointer">
+                <img src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/TradeMate%20Splashart.png" alt="TradeMate Logo" class="h-8 w-8">
                 <span class="text-xl font-bold tracking-tight text-white">TradeMate</span>
             </a>
 
             <!-- Navigation Links (Desktop) -->
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-cyan-400 text-white font-semibold">Home</a>
+                <a href="features/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Features</a>
                 <a href="pricing/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Pricing</a>
                 <a href="support/index.html" class="nav-link transition cursor-pointer px-1 pt-1 border-b-2 border-transparent text-gray-400 hover:text-white">Support</a>
             </nav>
@@ -238,13 +390,14 @@
             </button>
 
             <!-- Desktop Subscribe Button -->
-            <a href="pricing/index.html" class="btn-secondary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
+            <a href="pricing/index.html" class="btn-primary text-sm hidden md:inline-flex cursor-pointer">Subscribe Now</a>
         </div>
 
         <!-- Mobile Navigation Menu (Overlay) -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 z-20" style="background-color: #111111;">
             <nav class="px-4 py-4 space-y-3">
                 <a href="index.html" class="block text-cyan-400 transition py-2">Home</a>
+                <a href="features/index.html" class="block text-white hover:text-cyan-400 transition py-2">Features</a>
                 <a href="pricing/index.html" class="block text-white hover:text-cyan-400 transition py-2">Pricing</a>
                 <a href="support/index.html" class="block text-white hover:text-cyan-400 transition py-2">Support</a>
                 <a href="pricing/index.html" class="btn-primary text-center block mt-4">Subscribe Now</a>
@@ -252,22 +405,27 @@
         </div>
     </header>
 
+    <!-- Grünliches Licht aus der Mitte (über Header) -->
+    <div class="absolute top-[200px] left-1/2 -translate-x-1/2 pointer-events-none z-0">
+        <div class="w-[800px] h-[800px] rounded-full bg-emerald-500 opacity-20 blur-[120px]"></div>
+    </div>
+
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto relative z-0">
-        <section class="py-16 md:py-32 text-center px-4 sm:px-6 lg:px-8">
-                <h1 class="hero-headline text-white max-w-5xl mx-auto animate-on-scroll">
+        <section class="py-16 md:py-32 text-center px-4 sm:px-6 lg:px-8 relative">
+                <h1 class="hero-headline text-white max-w-5xl mx-auto animate-on-scroll relative z-10">
                     Your Trading Journal, redefined.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 gradient-animate">For iOS, iPadOS and macOS.</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 gradient-animate text-2xl md:text-3xl">For iOS, iPadOS and macOS.</span>
                 </h1>
-                <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto font-light animate-on-scroll" style="animation-delay: 0.2s;">
+                <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto font-light animate-on-scroll relative z-10" style="animation-delay: 0.2s;">
                     TradeMate is the modern, lightning-fast journal that syncs your performance in real time. Analyze, optimize and win.
                 </p>
 
                 <!-- CTA-Buttons -->
-                <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-on-scroll" style="animation-delay: 0.4s;">
+                <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-on-scroll relative z-10" style="animation-delay: 0.4s;">
 
                     <!-- App Store Button -->
-                    <a href="https://www.apple.com/app-store/" target="_blank" class="app-store-btn text-lg cursor-pointer mx-auto sm:mx-0 animate-float">
+                    <a href="https://www.apple.com/app-store/" target="_blank" class="app-store-btn text-lg cursor-pointer mx-auto sm:mx-0">
                         <!-- Apple Logo/Icon (Minimalist SVG) -->
                         <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 20.94a1 1 0 01-.7-.3l-3.35-3.05a.7.7 0 01-.2-.5V5.5a1 1 0 011.66-.75L12 6.55l3.59-1.81a1 1 0 011.66.75v11.1a.7.7 0 01-.2.5L12.7 20.64a1 1 0 01-.7.3z" />
@@ -287,7 +445,7 @@
                 <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
                     <div class="relative animate-on-scroll animate-scale mb-12">
                         <img
-                            src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/All%20devices.png?raw=true"
+                            src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/All%20devices.png"
                             alt="TradeMate on iPhone, iPad and Mac"
                             class="w-full h-auto mx-auto rounded-2xl"
                             style="max-width: 1200px;"
@@ -315,7 +473,7 @@
                             <p class="text-gray-400 text-lg">
                                 TradeMate was built by traders for traders. The interface is lightning-fast, intuitive, and focuses on the data that truly matters. No distractions, just performance.
                             </p>
-                            <a href="#features" class="inline-flex mt-6 text-cyan-400 hover:text-cyan-300 font-semibold items-center">
+                            <a href="features/index.html" class="inline-flex mt-6 text-cyan-400 hover:text-cyan-300 font-semibold items-center">
                                 Discover all features
                                 <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
@@ -324,7 +482,7 @@
                         <!-- Right Column: The Image -->
                         <div class="relative mx-auto w-full max-w-md md:max-w-xl overflow-visible animate-on-scroll animate-slide-right">
                             <img
-                                src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/1.png?raw=true"
+                                src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/1.png"
                                 alt="TradeMate App Detail View Screenshot"
                                 class="w-full h-auto mx-auto object-contain"
                                 onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot';"
@@ -343,7 +501,7 @@
                         The Power of TradeMate
                     </h2>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-on-scroll" style="animation-delay: 0.2s;">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto animate-on-scroll" style="animation-delay: 0.2s;">
 
                         <!-- Feature 1: Sync Trades (LiveSync) -->
                         <div class="apple-card p-6 md:p-8 text-center">
@@ -389,95 +547,39 @@
                                 A flawless, intuitive design inspired by the world's best apps makes journaling a pleasure.
                             </p>
                         </div>
-
-                        <!-- Feature 4: Multi-Device Sync -->
-                        <div class="apple-card p-6 md:p-8 text-center">
-                            <div class="w-12 h-12 flex items-center justify-center mx-auto bg-blue-500 rounded-full mb-4">
-                                <!-- SVG Icon: Devices -->
-                                <svg class="icon w-6 h-6 text-white" viewBox="0 0 24 24">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                                    <line x1="8" y1="21" x2="16" y2="21" />
-                                    <line x1="12" y1="17" x2="12" y2="21" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Multi-Device Sync</h3>
-                            <p class="text-gray-400">
-                                Seamless synchronization between iPhone, iPad and Mac. Your data is available wherever you need it.
-                            </p>
-                        </div>
-
-                        <!-- Feature 5: Trade Journal -->
-                        <div class="apple-card p-6 md:p-8 text-center">
-                            <div class="w-12 h-12 flex items-center justify-center mx-auto bg-purple-500 rounded-full mb-4">
-                                <!-- SVG Icon: Book -->
-                                <svg class="icon w-6 h-6 text-white" viewBox="0 0 24 24">
-                                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Detailed Journaling</h3>
-                            <p class="text-gray-400">
-                                Add screenshots, notes and tags to every trade. Document your decisions and learn from every trade.
-                            </p>
-                        </div>
-
-                        <!-- Feature 6: Real-time Statistics -->
-                        <div class="apple-card p-6 md:p-8 text-center">
-                            <div class="w-12 h-12 flex items-center justify-center mx-auto bg-orange-500 rounded-full mb-4">
-                                <!-- SVG Icon: Bar Chart -->
-                                <svg class="icon w-6 h-6 text-white" viewBox="0 0 24 24">
-                                    <line x1="12" y1="20" x2="12" y2="10" />
-                                    <line x1="18" y1="20" x2="18" y2="4" />
-                                    <line x1="6" y1="20" x2="6" y2="16" />
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2">Real-time Statistics</h3>
-                            <p class="text-gray-400">
-                                Live dashboards with win rate, profit factor, drawdown and more. See your performance at a glance.
-                            </p>
-                        </div>
                     </div>
 
-                    <!-- OPTIMIZED SECTION: "Your Trading Edge" with enlarged image -->
+                    <!-- View All Features Button -->
+                    <div class="text-center mt-12 animate-on-scroll" style="animation-delay: 0.4s;">
+                        <a href="features/index.html" class="btn-primary text-lg inline-flex items-center">
+                            View All Features
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- OPTIMIZED SECTION: "Your Trading Edge" -->
                     <div class="mt-20 md:mt-32 relative">
-                        <div class="rounded-2xl bg-gray-900 border border-gray-700 shadow-xl overflow-hidden">
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                                <!-- Left Half: Text -->
-                                <div class="p-8 md:p-16 flex flex-col justify-center">
-                                    <span class="text-sm font-semibold uppercase text-cyan-400 tracking-wider">Core Feature</span>
-                                    <h3 class="text-3xl font-bold mt-2 mb-4 text-white">Your Trading Edge: Found and maximized.</h3>
-                                    <p class="text-gray-400 text-lg">
-                                        Our exceptional analysis capabilities and integrated <strong>Strategy Builder</strong> help you precisely identify your trading edge and significantly maximize the gains of your strategies.
-                                    </p>
+                        <div class="overflow-hidden">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 metallic-card">
+                                <!-- Left Half: Image -->
+                                <div class="relative h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center p-8 z-10">
+                                    <img
+                                        src="https://github.com/rtp4cnx8rh-create/trademate/blob/main/images/iPhone%2017%20Pro%20-%20Deep%20Blue%20-%20Analytics.png?raw=true"
+                                        alt="TradeMate Analytics View on iPhone"
+                                        class="relative z-[1] h-full w-auto object-contain"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/300x550/333/EEE?text=Analytics+Screenshot';"
+                                    />
                                 </div>
 
-                                <!-- Right Half: Enlarged image with sparkle effects -->
-                                <div class="relative overflow-hidden h-[400px] md:h-[500px] lg:h-[600px] flex items-start md:items-center justify-center pt-8 md:pt-0">
-                                    <!-- Animated sparkle effect in background - Extended across the entire field -->
-                                    <div class="absolute inset-0 opacity-25 z-0">
-                                        <!-- Large light orbs -->
-                                        <div class="absolute top-[10%] left-[15%] w-40 h-40 bg-cyan-400 rounded-full blur-3xl animate-pulse"></div>
-                                        <div class="absolute bottom-[15%] right-[10%] w-36 h-36 bg-emerald-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
-                                        <div class="absolute top-[50%] right-[20%] w-32 h-32 bg-teal-400 rounded-full blur-3xl animate-pulse" style="animation-delay: 0.5s;"></div>
-
-                                        <!-- Medium light orbs -->
-                                        <div class="absolute top-[20%] right-[30%] w-24 h-24 bg-cyan-300 rounded-full blur-2xl animate-pulse" style="animation-delay: 1.5s;"></div>
-                                        <div class="absolute bottom-[30%] left-[25%] w-28 h-28 bg-emerald-300 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
-                                        <div class="absolute top-[70%] left-[10%] w-20 h-20 bg-teal-300 rounded-full blur-2xl animate-pulse" style="animation-delay: 0.8s;"></div>
-
-                                        <!-- Small light orbs for additional sparkle -->
-                                        <div class="absolute top-[35%] left-[40%] w-16 h-16 bg-cyan-200 rounded-full blur-xl animate-pulse" style="animation-delay: 1.2s;"></div>
-                                        <div class="absolute bottom-[50%] right-[15%] w-14 h-14 bg-emerald-200 rounded-full blur-xl animate-pulse" style="animation-delay: 1.8s;"></div>
-                                        <div class="absolute top-[80%] right-[40%] w-12 h-12 bg-teal-200 rounded-full blur-xl animate-pulse" style="animation-delay: 2.3s;"></div>
-                                    </div>
-
-                                    <img
-                                        src="https://github.com/rtp4cnx8rh-create/trademate/blob/96acd9d4d7c83f858b4116ae536eb368d333d082/images/Simulator%20Screenshot%20-%20iPhone%2017%20-%202025-12-04%20at%2000.39.26-portrait.png?raw=true"
-                                        alt="TradeMate Simulator View on iPhone"
-                                        class="relative z-[1] h-[140%] w-auto"
-                                        style="filter: drop-shadow(0 10px 30px rgba(0,0,0,0.5));"
-                                        onerror="this.onerror=null; this.src='https://placehold.co/300x550/333/EEE?text=Simulator+Screenshot';"
-                                    />
+                                <!-- Right Half: Text -->
+                                <div class="p-8 md:p-16 flex flex-col justify-center z-10">
+                                    <span class="text-sm font-semibold uppercase text-cyan-400 tracking-wider">Become Profitable</span>
+                                    <h3 class="text-3xl font-bold mt-2 mb-4 text-white">FIND YOUR EDGE</h3>
+                                    <p class="text-gray-400 text-lg">
+                                        Our powerful <strong>Advanced Analytics</strong> combined with the integrated <strong>Strategy Builder</strong> help you discover and refine your trading edge with precision and data-driven insights.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -501,7 +603,7 @@
                 <!-- App Store Badge -->
                 <a href="https://www.apple.com/app-store/" target="_blank" class="inline-block">
                     <img
-                        src="https://github.com/rtp4cnx8rh-create/trademate/blob/ad8baf065cfa561cf5f4fddd14ca85241ec7acd4/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg?raw=true"
+                        src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
                         alt="Download on the App Store"
                         class="h-12 md:h-14"
                         onerror="this.onerror=null; this.style.display='none';"
@@ -523,7 +625,7 @@
 
                 <div class="mt-4 space-x-4">
                     <a href="privacy/index.html" class="hover:text-gray-300 cursor-pointer">Privacy</a>
-                    <a href="#" class="hover:text-gray-300">Terms of Use</a>
+                    <a href="terms/index.html" class="hover:text-gray-300 cursor-pointer">Terms of Use</a>
                 </div>
             </div>
         </div>
