@@ -265,9 +265,11 @@
         .apple-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .apple-card:hover:not(.no-hover) {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        @media (min-width: 768px) {
+            .apple-card:hover:not(.no-hover) {
+                transform: scale(1.05);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            }
         }
 
         /* Gradient text animation */
@@ -377,6 +379,43 @@
                 left: 100%;
             }
         }
+
+        /* Floating animations for stat cards */
+        @keyframes float-slow {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes float-slower {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 4s ease-in-out infinite;
+        }
+
+        .animate-float-slower {
+            animation: float-slower 5s ease-in-out infinite;
+        }
+
+        /* Gradient flow animation for hero title */
+        @keyframes gradientFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
     </style>
 </head>
 <body class="antialiased" style="background-color: var(--color-body-bg);">
@@ -426,15 +465,16 @@
 
     <!-- Grünliches Licht aus der Mitte (über Header) -->
     <div class="absolute top-[200px] left-1/2 -translate-x-1/2 pointer-events-none z-0">
-        <div class="w-[800px] h-[800px] rounded-full bg-emerald-500 opacity-20 blur-[120px]"></div>
+        <div class="w-[400px] h-[400px] md:w-[800px] md:h-[800px] rounded-full bg-emerald-500 opacity-20 blur-[80px] md:blur-[120px]"></div>
     </div>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto relative z-0">
         <section class="py-16 md:py-32 text-center px-4 sm:px-6 lg:px-8 relative">
-                <h1 class="hero-headline text-white max-w-5xl mx-auto animate-on-scroll relative z-10">
-                    Your Trading Journal, redefined.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 gradient-animate text-2xl md:text-3xl">For iOS, iPadOS and macOS.</span>
+                <h1 class="hero-headline max-w-5xl mx-auto animate-on-scroll relative z-10">
+                    <span class="block text-white">Your Trading Journal,</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-emerald-400 to-cyan-500" style="background-size: 200% auto; animation: gradientFlow 3s ease-in-out infinite;">redefined.</span>
+                    <span class="block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 gradient-animate text-2xl md:text-3xl font-medium">For iOS, iPadOS and macOS.</span>
                 </h1>
                 <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto font-light animate-on-scroll relative z-10" style="animation-delay: 0.2s;">
                     TradeMate is the modern, lightning-fast journal that syncs your performance in real time. Analyze, optimize and win.
@@ -481,35 +521,87 @@
                     </div>
                 </div>
 
-                <!-- START: TEXT AND IMAGE SIDE BY SIDE -->
+                <!-- START: MODERN DESIGN SECTION -->
                 <div class="mt-20 md:mt-32 relative max-w-6xl mx-auto px-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-left">
+                    <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
-                        <!-- Left Column: Text -->
-                        <div class="animate-on-scroll animate-slide-left">
-                            <span class="text-sm font-semibold uppercase text-cyan-400 tracking-wider">Design & Usability</span>
-                            <h3 class="text-3xl font-bold mt-2 mb-4 text-white">Focus on what matters.</h3>
-                            <p class="text-gray-400 text-lg">
-                                TradeMate was built by traders for traders. The interface is lightning-fast, intuitive, and focuses on the data that truly matters. No distractions, just performance.
+                        <!-- Text Side -->
+                        <div class="order-2 lg:order-1 animate-on-scroll animate-slide-left text-left">
+                            <div class="inline-flex items-center px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-bold tracking-wide uppercase mb-6">
+                                Precision Workflow
+                            </div>
+                            <h3 class="text-4xl md:text-5xl font-bold text-white leading-tight mb-6">
+                                Spreadsheets are <span class="text-gray-600 line-through decoration-red-500/80 decoration-4">dead</span>.<br>
+                                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">Journaling is alive.</span>
+                            </h3>
+                            <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+                                Experience the fastest way to log your trades. Drag & drop screenshots, tag setups instantly, and let TradeMate handle the math. It's not just a journal; it's your automated trading assistant.
                             </p>
-                            <a href="features/index.html" class="inline-flex mt-6 text-cyan-400 hover:text-cyan-300 font-semibold items-center">
-                                Discover all features
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+                            <!-- Modern Checklist -->
+                            <ul class="space-y-5 mb-8">
+                                <li class="flex items-start text-gray-300">
+                                    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center mt-0.5 mr-4">
+                                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block">Smart Tagging System</strong>
+                                        <span class="text-sm text-gray-500">Categorize mistakes and setups in seconds.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start text-gray-300">
+                                    <div class="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center mt-0.5 mr-4">
+                                        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block">Visual Documentation</strong>
+                                        <span class="text-sm text-gray-500">Attach charts directly to your trades.</span>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <a href="features/index.html" class="inline-flex items-center text-white border-b border-cyan-500 hover:text-cyan-400 hover:border-cyan-400 transition-colors pb-1 font-medium group">
+                                See how it works
+                                <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                             </a>
                         </div>
 
-                        <!-- Right Column: The Image -->
-                        <div class="relative mx-auto w-full max-w-md md:max-w-xl overflow-visible animate-on-scroll animate-slide-right">
-                            <img
-                                src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/1.png"
-                                alt="TradeMate App Detail View Screenshot"
-                                class="w-full h-auto mx-auto object-contain"
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x400/333/EEE?text=TradeMate+Screenshot';"
-                            />
+                        <!-- Visual Side (Mockup + Floating Cards) -->
+                        <div class="order-1 lg:order-2 relative animate-on-scroll animate-scale flex justify-center lg:justify-end">
+                            <!-- Main Image Wrapper with glow -->
+                            <div class="relative z-10 mx-auto w-[260px] md:w-[300px]">
+                                <!-- Glow behind phone -->
+                                <div class="absolute inset-0 bg-cyan-500/20 blur-[60px] rounded-full"></div>
+
+                                <img src="https://raw.githubusercontent.com/rtp4cnx8rh-create/trademate/main/images/1.png" alt="App Interface" class="relative w-full h-auto drop-shadow-2xl rounded-[2.5rem] border-[6px] border-[#2c2c2e] z-10"
+                                     style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);">
+                            </div>
+
+                            <!-- Floating Stat Card 1 (Top Right) -->
+                            <div class="absolute top-12 -right-4 md:-right-8 lg:-right-4 bg-[#1e1e1e]/95 backdrop-blur-md border border-gray-700/50 p-4 rounded-2xl flex items-center gap-4 shadow-2xl z-20 animate-float-slow" style="max-width: 200px;">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Win Rate</div>
+                                    <div class="text-lg font-bold text-white">68.5%</div>
+                                </div>
+                            </div>
+
+                            <!-- Floating Stat Card 2 (Bottom Left) -->
+                            <div class="absolute bottom-24 -left-6 md:-left-12 lg:-left-12 bg-[#1e1e1e]/95 backdrop-blur-md border border-gray-700/50 p-4 rounded-2xl flex items-center gap-4 shadow-2xl z-20 animate-float-slower" style="max-width: 200px;">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <div class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Profit Factor</div>
+                                    <div class="text-lg font-bold text-white">2.41</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- END TEXT AND IMAGE -->
+                <!-- END: MODERN DESIGN SECTION -->
 
             </section>
 
